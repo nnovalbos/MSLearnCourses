@@ -5,6 +5,7 @@ using Android.OS;
 using GreatQuotes.ViewModels;
 using System.Collections.ObjectModel;
 using GreatQuotes.Loaders;
+using GreatQuotes.Contracts;
 
 namespace GreatQuotes.Droid {
     [Activity(Label = "@string/app_name", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
@@ -22,6 +23,8 @@ namespace GreatQuotes.Droid {
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
 
             QuoteLoaderFactory.Create = () => new QuoteLoader();
+            ServiceLocator.Instance.Add<ITextToSpeech, TextToSpeechService>();
+
             LoadApplication(new App());
         }
 

@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 using Foundation;
+using GreatQuotes.Contracts;
 using GreatQuotes.Loaders;
 using GreatQuotes.ViewModels;
 using UIKit;
@@ -29,7 +30,11 @@ namespace GreatQuotes.iOS {
             global::Xamarin.Forms.Forms.Init();
             QuoteLoaderFactory.Create = () => new QuoteLoader();
 
+            ServiceLocator.Instance.Add<ITextToSpeech, TextToSpeechService>();
+
             LoadApplication(new App());
+
+            
 
             return base.FinishedLaunching(uiApplication, launchOptions);
         }

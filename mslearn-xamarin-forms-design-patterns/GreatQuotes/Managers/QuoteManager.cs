@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using GreatQuotes.Contracts;
 using GreatQuotes.Loaders;
 using GreatQuotes.ViewModels;
 
@@ -25,6 +26,24 @@ namespace GreatQuotes.Managers
         public void Save()
         {
             loader.Save(Quotes);
+        }
+
+        public void SayQuote(GreatQuoteViewModel quote)
+        {
+            if (quote == null)
+                throw new ArgumentNullException("No quote set");
+
+            ITextToSpeech tts = ServiceLocator.Instance.Resolve<ITextToSpeech>();
+
+            if (tts != null)
+            {
+                var text = quote.QuoteText;
+
+                if (!string.IsNullOrWhiteSpace(quote.Author))
+                    text += $" by {quote.Author}";
+
+                tts.Speak(text);
+            }
         }
     }
 }

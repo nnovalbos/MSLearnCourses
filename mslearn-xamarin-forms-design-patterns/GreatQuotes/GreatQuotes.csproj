@@ -20,5 +20,6 @@
     <Folder Include="ViewModels\" />
     <Folder Include="Loaders\" />
     <Folder Include="Managers\" />
+    <Folder Include="Contracts\" />
   </ItemGroup>
 </Project>
