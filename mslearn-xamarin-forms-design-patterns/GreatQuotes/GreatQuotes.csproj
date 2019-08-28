@@ -18,5 +18,7 @@
     <Folder Include="Data\" />
     <Folder Include="Views\" />
     <Folder Include="ViewModels\" />
+    <Folder Include="Loaders\" />
+    <Folder Include="Managers\" />
   </ItemGroup>
 </Project>
