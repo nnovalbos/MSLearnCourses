@@ -21,5 +21,6 @@
     <Folder Include="Loaders\" />
     <Folder Include="Managers\" />
     <Folder Include="Contracts\" />
+    <Folder Include="IoC\" />
   </ItemGroup>
 </Project>

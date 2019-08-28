@@ -10,16 +10,29 @@ namespace GreatQuotes.Managers
     public class QuoteManager
     {
         IQuoteLoader loader;
+        private ITextToSpeech tts;
 
         public IList<GreatQuoteViewModel> Quotes { get; set; }
 
-        static readonly Lazy<QuoteManager> instance = new Lazy<QuoteManager>(() => new QuoteManager());
+        public static QuoteManager Instance { get; private set; }
 
-        public static QuoteManager Instance { get => instance.Value; }
+        //static readonly Lazy<QuoteManager> instance = new Lazy<QuoteManager>(() => new QuoteManager());
 
-        private QuoteManager()
+        //public static QuoteManager Instance { get => instance.Value; }
+
+        public QuoteManager(IQuoteLoader loader, ITextToSpeech tts)
         {
-            loader = QuoteLoaderFactory.Create();
+            if (Instance != null)
+            {
+                throw new Exception("Can only create a single QuoteManager.");
+            }
+
+            Instance = this;
+            this.loader = loader;
+            this.tts = tts;
+
+         //   loader = QuoteLoaderFactory.Create();
+            
             Quotes = new ObservableCollection<GreatQuoteViewModel>(loader.Load());
         }
 
@@ -33,7 +46,7 @@ namespace GreatQuotes.Managers
             if (quote == null)
                 throw new ArgumentNullException("No quote set");
 
-            ITextToSpeech tts = ServiceLocator.Instance.Resolve<ITextToSpeech>();
+          //  ITextToSpeech tts = ServiceLocator.Instance.Resolve<ITextToSpeech>();
 
             if (tts != null)
             {
