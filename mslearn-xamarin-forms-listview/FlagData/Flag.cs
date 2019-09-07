@@ -82,6 +82,11 @@ namespace FlagData
             set { ChangePropertyValue(ref _moreInformationUrl, value); }
         }
 
+        public override string ToString()
+        {
+            return Country;
+        }
+
         /// <summary>
         /// Helper method to test a field value against a new value,
         /// do the assignment if they are different, and then raise the

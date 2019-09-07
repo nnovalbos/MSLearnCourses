@@ -1,4 +1,5 @@
 using FlagData;
+using FlagFacts.Views;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -13,7 +14,7 @@ namespace FlagFacts
 
             InitializeComponent();
 
-            MainPage = new NavigationPage(new FlagDetailsPage());
+            MainPage = new NavigationPage(new AllFlagsPage());
         }
 
         protected override void OnStart()
