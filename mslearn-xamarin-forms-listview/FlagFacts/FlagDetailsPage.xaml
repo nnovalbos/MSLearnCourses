@@ -2,8 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:FlagFacts"
-             xmlns:cvt="clr-namespace:FunFlacts.Converters"
-             xmlns:data="clr-namespace:FlagData;assembly=FlagData"
+             
+            
              x:Class="FlagFacts.FlagDetailsPage"
              Title="Fun with Flags">
 
@@ -16,12 +16,7 @@
                      Clicked="OnShow" Icon="ic_action_search.png" />
     </ContentPage.ToolbarItems>
 
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <cvt:EmbeddedImageConverter x:Key="irConverter" 
-                    ResolvingAssemblyType="{x:Type data:Flag}" />
-        </ResourceDictionary>
-    </ContentPage.Resources>
+  
 
     <ScrollView>
         <StackLayout Spacing="10">
